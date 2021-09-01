@@ -13,22 +13,32 @@ code {
 }
 
 
-img{
-  height: 40px;
+#img{
+  height: 70px;
   width: 70px;
+  border: 4px solid rgb(3, 80, 104);
 }
+
 #item-row{
   margin: auto;
   display: flex;
  
 }
 
-img {
-  
-  object-fit: contain;
-}
 
 .container{
   border: 2px solid black;
   padding: 10px;
+  min-width: 700px;
+  min-height: fit-content;
+  max-height: 150px;
+  width:fit-content;
+}
+.row{
+  max-height: 150px !important;
+  margin: 5px;
+}
+.button-image{
+  height: 25px !important;
+  width: 25px !important;
 }
