@@ -35,6 +35,21 @@ code {
   width:fit-content;
   border-radius: 25px;
 }
+.navbarr{
+  border: 2px solid black;
+  /* padding: 10px;
+  min-width: 700px;
+  min-height: fit-content;
+  max-height: 150px;
+  width:fit-content;
+  border-radius: 25px; */
+  border-radius: 25px;
+ 
+  display: inline-block;
+  width:fit-content;
+  min-width: 700px;
+  margin: auto;
+}
 button{
   border-radius: 50%;
 }
@@ -45,4 +60,24 @@ button{
 .button-image{
   height: 25px !important;
   width: 25px !important;
+}
+
+#name{
+  display: inline-block;
+  left: 0;
+  margin: 0px;
+}
+.count{
+  padding: 5px;
+  display: inline-block;
+  width: auto;
+}
+#counter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  width: 20px !important;
+ 
+  height: 20px !important;
 }

@@ -6,6 +6,7 @@ class CardItem extends React.Component{
 
  
     render(){
+        console.log("Heyyy");
         const {price,qty,title,img}=this.props.product;
         return (
             <div className="container teal">

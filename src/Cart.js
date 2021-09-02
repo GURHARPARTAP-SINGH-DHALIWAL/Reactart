@@ -89,7 +89,7 @@ class Cart extends React.Component{
                 
                 {
                     products.map((product)=>{
-                        return <div className="row"><CardItem  product={product} handleIncreaseQuantity={this.handleIncreaseQuantity} handleDecreaseQuantity={this.handleDecreaseQuantity} handleResetQuantity={this.handleResetQuantity}  handleDeleteQuantity={this.handleDeleteQuantity}  /></div>
+                        return <div className="row" key={product.id} ><CardItem product={product} handleIncreaseQuantity={this.handleIncreaseQuantity} handleDecreaseQuantity={this.handleDecreaseQuantity} handleResetQuantity={this.handleResetQuantity}  handleDeleteQuantity={this.handleDeleteQuantity}  /></div>
                     })
                 }
 
