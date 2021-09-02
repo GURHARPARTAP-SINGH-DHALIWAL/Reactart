@@ -4,36 +4,7 @@ import React from 'react'
 class CardItem extends React.Component{
 
 
-    increaseQuantity=
-    ()=>{
-        // so react will know to re render this
-        this.setState({
-            qty:this.state.qty+1
-        });
-    }
-
-    decreaseQuantity=
-    ()=>{
-        // so react will know to re render this
-          
-         this.setState((prev)=>{
-
-            if(prev.qty>=1)
-            {
-                return {
-                    qty:prev.qty-1
-                };
-            }
-            else{
-                return {
-                    qty:prev.qty
-                };
-            }
-
-         });
-
-    }
-
+ 
     render(){
         const {price,qty,title,img}=this.props.product;
         return (
@@ -55,7 +26,7 @@ class CardItem extends React.Component{
                    <div className="row grey">
                        <div className="col s4">
                            
-                            <button className=" orange " onClick={this.increaseQuantity}>+</button>                          
+                            <button className=" orange " onClick={()=>{this.props.handleIncreaseQuantity(this.props.product)}}>+</button>                          
                        </div>
 
                        <div className="col s4">

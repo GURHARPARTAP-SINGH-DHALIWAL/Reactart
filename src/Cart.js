@@ -38,6 +38,14 @@ class Cart extends React.Component{
             ]
         };
     }
+    handleIncreaseQuantity=(product)=>{
+        const {products}=this.state;
+        var index=products.indexOf(product);
+        products[index].qty+=1;
+        this.setState({
+            products
+        });
+    };
     render(){
         const {products}=this.state;
         return (
@@ -45,7 +53,7 @@ class Cart extends React.Component{
                 
                 {
                     products.map((product)=>{
-                        return <div className="row"><CardItem  product={product} /></div>
+                        return <div className="row"><CardItem  product={product} handleIncreaseQuantity={this.handleIncreaseQuantity}/></div>
                     })
                 }
 
