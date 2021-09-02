@@ -33,6 +33,10 @@ code {
   min-height: fit-content;
   max-height: 150px;
   width:fit-content;
+  border-radius: 25px;
+}
+button{
+  border-radius: 50%;
 }
 .row{
   max-height: 150px !important;
