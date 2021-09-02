@@ -96,13 +96,25 @@ class App extends React.Component {
     return count;
   }
 
+  getCartTotal()
+  {
+    const {products}=this.state;
+
+    let count=0;
+    products.forEach((item)=>{
+      count+=(item.qty*item.price);
+    });
+
+    return count;
+  }
+
   render(){
   return (
-    <div className="App">
+    <div className="App" id="APP">
       <h1 >Cart</h1>
       <NavBar count={this.getCartCount()}/>
       <Cart products={this.state.products}  handleIncreaseQuantity={this.handleIncreaseQuantity} handleDecreaseQuantity={this.handleDecreaseQuantity} handleResetQuantity={this.handleResetQuantity}  handleDeleteQuantity={this.handleDeleteQuantity}/>
-
+      <div className="lead text-white">TOTAL : {this.getCartTotal()}</div>
     </div>
   );
   }
