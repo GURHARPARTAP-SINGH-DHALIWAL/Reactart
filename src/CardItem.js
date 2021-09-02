@@ -24,17 +24,23 @@ class CardItem extends React.Component{
                        <span>{qty}</span>
                    </div>
                    <div className="row grey">
-                       <div className="col s4">
+                       <div className="col s3">
                            
                             <button className=" orange " onClick={()=>{this.props.handleIncreaseQuantity(this.props.product)}}>+</button>                          
                        </div>
 
-                       <div className="col s4">
+                       <div className="col s3">
                        <button className=" yellow black-text" onClick={()=>{this.props.handleDecreaseQuantity(this.props.product)}}>-</button>                                
                        </div>
+                        
+                       <div className="col s3">
+                       <button className=" blue black-text" onClick={()=>{this.props.handleResetQuantity(this.props.product)}}>R</button>                                
+                       </div>
 
-                       <div className="col s4">
-                       <button className=" red">X</button>                              
+
+
+                       <div className="col s3">
+                       <button className=" red" onClick={()=>this.props.handleDeleteQuantity(this.props.product.id)}>X</button>                              
                        </div>
 
 

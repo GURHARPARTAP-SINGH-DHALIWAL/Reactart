@@ -48,17 +48,37 @@ class Cart extends React.Component{
         });
     };
 
+    handleResetQuantity=(product)=>{
+        const {products}=this.state;
+        var index=products.indexOf(product);
+        products[index].qty=1;
+        this.setState({
+            products
+        });
+    };
+
     handleDecreaseQuantity=(product)=>{
         const {products}=this.state;
         var index=products.indexOf(product);
         if(products[index].qty>0){
-            
+
         products[index].qty-=1;
         this.setState({
             products
         });
         
         }
+    };
+
+    handleDeleteQuantity=(id)=>{
+        const {products}=this.state;
+        
+        const items=products.filter((item)=>{return item.id!==id});
+
+        this.setState({
+            products:items
+        });
+        
     };
 
 
@@ -69,7 +89,7 @@ class Cart extends React.Component{
                 
                 {
                     products.map((product)=>{
-                        return <div className="row"><CardItem  product={product} handleIncreaseQuantity={this.handleIncreaseQuantity} handleDecreaseQuantity={this.handleDecreaseQuantity}/></div>
+                        return <div className="row"><CardItem  product={product} handleIncreaseQuantity={this.handleIncreaseQuantity} handleDecreaseQuantity={this.handleDecreaseQuantity} handleResetQuantity={this.handleResetQuantity}  handleDeleteQuantity={this.handleDeleteQuantity}  /></div>
                     })
                 }
 
