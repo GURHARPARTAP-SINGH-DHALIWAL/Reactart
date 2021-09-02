@@ -38,6 +38,7 @@ class Cart extends React.Component{
             ]
         };
     }
+    // Arrow function binds this to the object in which this is declared
     handleIncreaseQuantity=(product)=>{
         const {products}=this.state;
         var index=products.indexOf(product);
@@ -46,6 +47,21 @@ class Cart extends React.Component{
             products
         });
     };
+
+    handleDecreaseQuantity=(product)=>{
+        const {products}=this.state;
+        var index=products.indexOf(product);
+        if(products[index].qty>0){
+            
+        products[index].qty-=1;
+        this.setState({
+            products
+        });
+        
+        }
+    };
+
+
     render(){
         const {products}=this.state;
         return (
@@ -53,7 +69,7 @@ class Cart extends React.Component{
                 
                 {
                     products.map((product)=>{
-                        return <div className="row"><CardItem  product={product} handleIncreaseQuantity={this.handleIncreaseQuantity}/></div>
+                        return <div className="row"><CardItem  product={product} handleIncreaseQuantity={this.handleIncreaseQuantity} handleDecreaseQuantity={this.handleDecreaseQuantity}/></div>
                     })
                 }
 

@@ -30,7 +30,7 @@ class CardItem extends React.Component{
                        </div>
 
                        <div className="col s4">
-                       <button className=" yellow black-text" onClick={this.decreaseQuantity}>-</button>                                
+                       <button className=" yellow black-text" onClick={()=>{this.props.handleDecreaseQuantity(this.props.product)}}>-</button>                                
                        </div>
 
                        <div className="col s4">
