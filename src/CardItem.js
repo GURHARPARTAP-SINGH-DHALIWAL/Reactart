@@ -9,7 +9,7 @@ class CardItem extends React.Component{
         console.log("Heyyy");
         const {price,qty,title,img}=this.props.product;
         return (
-            <div className="container teal">
+            <div className="container grey ">
            <div className="row center" id="item-row" >
                <div className="col s2 valign-wrapper">
                    <img id="img" className="circle" src={img} alt="" />
