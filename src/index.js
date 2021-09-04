@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-import { initializeApp } from "firebase/app";
-import 'firebase/firestore';
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
 
 const firebaseConfig = {
@@ -19,7 +19,7 @@ const firebaseConfig = {
 };
 
 
-const app = initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
 
 

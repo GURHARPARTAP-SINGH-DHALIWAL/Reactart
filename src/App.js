@@ -3,9 +3,9 @@ import './App.css';
 import Cart from './Cart';
 import NavBar from './NavBar';
 import React from 'react';
+// Use compat mode
 import firebase from 'firebase/compat/app';
-import 'firebase/firestore';
-
+import 'firebase/compat/firestore';
 class App extends React.Component {
 
   constructor()
@@ -20,15 +20,13 @@ class App extends React.Component {
   }
   // After rendering for the first time this function is used
 
-  componentDidMount()
+   componentDidMount()
   {
     firebase
     .firestore()
     .collection('products')
     .get()
-    .then((snapshot)=>{
-      console.log(snapshot);
-    });
+    .then((snapshot)=>{console.log(snapshot)});
   }
 
 
