@@ -3,9 +3,10 @@ import './App.css';
 import Cart from './Cart';
 import NavBar from './NavBar';
 import React from 'react';
-// Use compat mode
+// Use compat mode everything is imported in this
 import firebase from 'firebase/compat/app';
-import 'firebase/compat/firestore';
+// this will automatically go in firebase object
+// import 'firebase/compat/auth';
 class App extends React.Component {
 
   constructor()
@@ -15,18 +16,35 @@ class App extends React.Component {
       this.state={
           products:[
              
-          ]
+          ],
+          loading:true
       };
   }
   // After rendering for the first time this function is used
 
    componentDidMount()
-  {
+  {  
+    console.log(firebase);
     firebase
     .firestore()
     .collection('products')
     .get()
-    .then((snapshot)=>{console.log(snapshot)});
+    .then((snapshot)=>{
+
+        const products=snapshot.docs.map((doc)=>{
+          const data=doc.data();
+          data['id']=doc.id;
+          // doc.data() does not returns id
+          return data;
+        });
+        this.setState({
+          loading:false
+        });
+        this.setState({
+          products
+        });
+
+    });
   }
 
 
@@ -102,6 +120,7 @@ class App extends React.Component {
     <div className="App" id="APP">
       <h1 >Cart</h1>
       <NavBar count={this.getCartCount()}/>
+      {this.state.loading&& <h1>Loading Products...</h1>}
       <Cart products={this.state.products}  handleIncreaseQuantity={this.handleIncreaseQuantity} handleDecreaseQuantity={this.handleDecreaseQuantity} handleResetQuantity={this.handleResetQuantity}  handleDeleteQuantity={this.handleDeleteQuantity}/>
       <div className="lead text-white">TOTAL : {this.getCartTotal()}</div>
     </div>
