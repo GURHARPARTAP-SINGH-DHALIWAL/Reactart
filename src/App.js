@@ -67,19 +67,43 @@ class App extends React.Component {
   handleIncreaseQuantity=(product)=>{
       const {products}=this.state;
       var index=products.indexOf(product);
-      products[index].qty+=1;
-      this.setState({
-          products
-      });
+      // products[index].qty+=1;
+      // this.setState({
+      //     products
+      // });
+
+      const docRef=firebase.firestore()
+      .collection('products').doc(product.id);
+
+      docRef.update({
+        qty:product.qty+1
+      })
+      .then(()=>{console.log("Updated!")})
+      .catch((err)=>{console.log(err)});
+
+
   };
 
   handleResetQuantity=(product)=>{
       const {products}=this.state;
       var index=products.indexOf(product);
-      products[index].qty=1;
-      this.setState({
-          products
-      });
+      // products[index].qty=1;
+      // this.setState({
+      //     products
+      // });
+
+      const docRef=firebase.firestore()
+      .collection('products').doc(product.id);
+
+      docRef.update({
+        qty:1
+      })
+      .then(()=>{console.log("Updated!")})
+      .catch((err)=>{console.log(err)});
+
+      // now whenever we increase quantity it should get updated in firebase
+
+
   };
 
   handleDecreaseQuantity=(product)=>{
@@ -87,10 +111,19 @@ class App extends React.Component {
       var index=products.indexOf(product);
       if(products[index].qty>0){
 
-      products[index].qty-=1;
-      this.setState({
-          products
-      });
+      // products[index].qty-=1;
+      // this.setState({
+      //     products
+      // });
+
+      const docRef=firebase.firestore()
+      .collection('products').doc(product.id);
+
+      docRef.update({
+        qty:product.qty-1
+      })
+      .then(()=>{console.log("Updated!")})
+      .catch((err)=>{console.log(err)});
       
       }
   };
@@ -129,15 +162,39 @@ class App extends React.Component {
 
     return count;
   }
+  addProduct=()=>{
+    firebase
+    .firestore()
+    .collection('products')
+    .add({
+      title:'Laptop',
+      qty:13,
+      price:100009,
+      img:"https://images.unsplash.com/photo-1611078489935-0cb964de46d6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGFwdG9wc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+    })
+    .then((docRef)=>{
+      console.log('prodict added',docRef);
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
+    
+  }
 
   render(){
   return (
     <div className="App" id="APP">
       <h1 >Cart</h1>
       <NavBar count={this.getCartCount()}/>
+     
+    
+     
+  
       {this.state.loading&& <h1>Loading Products...</h1>}
       <Cart products={this.state.products}  handleIncreaseQuantity={this.handleIncreaseQuantity} handleDecreaseQuantity={this.handleDecreaseQuantity} handleResetQuantity={this.handleResetQuantity}  handleDeleteQuantity={this.handleDeleteQuantity}/>
       <div className="lead text-white">TOTAL : {this.getCartTotal()}</div>
+      <br/>
+      <button className="btn align-center" id="add-button" onClick={this.addProduct}>Add Laptop</button>
     </div>
   );
   }
