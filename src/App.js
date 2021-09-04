@@ -21,30 +21,45 @@ class App extends React.Component {
       };
   }
   // After rendering for the first time this function is used
-
+// onSnapshot will add a listener whenever the db chammges it calls callback again  
    componentDidMount()
   {  
     console.log(firebase);
     firebase
     .firestore()
     .collection('products')
-    .get()
-    .then((snapshot)=>{
+    .onSnapshot((snapshot)=>{
 
-        const products=snapshot.docs.map((doc)=>{
-          const data=doc.data();
-          data['id']=doc.id;
-          // doc.data() does not returns id
-          return data;
-        });
-        this.setState({
-          loading:false
-        });
-        this.setState({
-          products
-        });
+      const products=snapshot.docs.map((doc)=>{
+        const data=doc.data();
+        data['id']=doc.id;
+        // doc.data() does not returns id
+        return data;
+      });
+      this.setState({
+        loading:false
+      });
+      this.setState({
+        products
+      });
 
-    });
+  });
+    // .then((snapshot)=>{
+
+    //     const products=snapshot.docs.map((doc)=>{
+    //       const data=doc.data();
+    //       data['id']=doc.id;
+    //       // doc.data() does not returns id
+    //       return data;
+    //     });
+    //     this.setState({
+    //       loading:false
+    //     });
+    //     this.setState({
+    //       products
+    //     });
+
+    // });
   }
 
 
