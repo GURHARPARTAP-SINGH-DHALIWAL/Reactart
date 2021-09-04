@@ -9,7 +9,7 @@ class CardItem extends React.Component{
         console.log("Heyyy");
         const {price,qty,title,img}=this.props.product;
         return (
-            <div className="container grey ">
+            <div className="container blue lighten-5 ">
            <div className="row center" id="item-row" >
                <div className="col s2 valign-wrapper">
                    <img id="img" className="circle" src={img} alt="" />
@@ -24,24 +24,24 @@ class CardItem extends React.Component{
                    <div className="row">
                        <span>{qty}</span>
                    </div>
-                   <div className="row grey">
+                   <div className="row blue lighten-3" id="actions">
                        <div className="col s3">
                            
-                            <button className=" orange " onClick={()=>{this.props.handleIncreaseQuantity(this.props.product)}}>+</button>                          
+                            <button className=" orange " onClick={()=>{this.props.handleIncreaseQuantity(this.props.product)}}> <i className="fas fa-plus"></i> </button>                          
                        </div>
 
                        <div className="col s3">
-                       <button className=" yellow black-text" onClick={()=>{this.props.handleDecreaseQuantity(this.props.product)}}>-</button>                                
+                       <button className=" yellow black-text" onClick={()=>{this.props.handleDecreaseQuantity(this.props.product)}}> <i className="fas fa-minus"></i></button>                                
                        </div>
                         
                        <div className="col s3">
-                       <button className=" blue black-text" onClick={()=>{this.props.handleResetQuantity(this.props.product)}}>R</button>                                
+                       <button className=" green black-text" onClick={()=>{this.props.handleResetQuantity(this.props.product)}}> <i className="fas fa-redo"></i></button>                                
                        </div>
 
 
 
                        <div className="col s3">
-                       <button className=" red" onClick={()=>this.props.handleDeleteQuantity(this.props.product.id)}>X</button>                              
+                       <button className=" red" onClick={()=>this.props.handleDeleteQuantity(this.props.product.id)}> <i className="fas fa-trash"></i></button>                              
                        </div>
 
 

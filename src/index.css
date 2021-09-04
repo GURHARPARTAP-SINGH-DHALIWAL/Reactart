@@ -97,3 +97,6 @@ button{
   position: relative;
   left: 0;
 }
+#actions{
+  border-radius: 10px;
+}
