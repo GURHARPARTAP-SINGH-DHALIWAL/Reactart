@@ -131,11 +131,22 @@ class App extends React.Component {
   handleDeleteQuantity=(id)=>{
       const {products}=this.state;
       
-      const items=products.filter((item)=>{return item.id!==id});
+      // const items=products.filter((item)=>{return item.id!==id});
 
-      this.setState({
-          products:items
-      });
+      // this.setState({
+      //     products:items
+      // });
+
+
+      const docRef=firebase.firestore()
+      .collection('products').doc(id);
+
+      docRef
+      .delete()
+      .then(()=>{console.log("Deleted!")})
+      .catch((err)=>{console.log(err)});
+      
+      
       
   };
 
