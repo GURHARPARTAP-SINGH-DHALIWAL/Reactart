@@ -10,12 +10,7 @@ import "firebase/compat/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB-NP02CPwETlGx8YaEu_OPDTVcV7PBZ20",
-  authDomain: "cart-aa0c7.firebaseapp.com",
-  projectId: "cart-aa0c7",
-  storageBucket: "cart-aa0c7.appspot.com",
-  messagingSenderId: "104390404686",
-  appId: "1:104390404686:web:8146be4fc35398bf65b11f"
+
 };
 
 
